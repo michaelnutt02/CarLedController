@@ -12,7 +12,7 @@
     class CarLedController
     {
         public:
-            CarLedController(int* leds, int numCols, int numRows, double brightness);
+            CarLedController(int* leds, int numCols, int numRows, int brightness);
             void initLoop();
             void renderLoop();
             void initStrip(int ledCount, int ledPin);
