@@ -157,7 +157,7 @@ long HSBtoRGB(float _hue, float _sat, float _brightness) {
     return long((ired << 16) | (igreen << 8) | (iblue));
 }
 
-void CarLedController::GAMER(int interval) {
+void CarLedController::GAMER(int interval, float density) {
     int loopIterations = 361;
     int i = (millis() / interval) % loopIterations;
 
@@ -167,7 +167,7 @@ void CarLedController::GAMER(int interval) {
     float ledScale = (float)361/_ledCount;
 
     for(int j = 0; j < _ledCount; j++) {
-        float hue = (int)(i+j*ledScale) % 361;
+        float hue = (int)(i+j*ledScale*density) % 361;
         long color = HSBtoRGB(hue, saturation, brightness); 
         int red = color >> 16 & 255;
         int green = color >> 8 & 255;
