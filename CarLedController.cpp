@@ -43,16 +43,15 @@ void CarLedController::blinkerRight(uint32_t color, int interval) {
     int endHorizontal = _numCols - 1;
 
     for(int col = startHorizontal; col < endHorizontal; col++) {
-        if(map(col, startHorizontal, endHorizontal, 0, 3) <= i) {
+        if(map(col, startHorizontal, endHorizontal, 0, 4) <= i) {
             setLed(0, col, color);
             setLed(_numRows - 1, col, color);
         }
     }
 
-    for(int row = 0; row < _numRows/2; row++) {
-        if(map(row, 0, _numRows/2, 4, 5) <= i) {
-            setLed(row, 0, color);
-            setLed(_numRows - 1 - row, _numCols - 1, color);
+    for(int row = 0; row < _numRows; row++) {
+        if(4 <= i) {
+            setLed(row, _numCols - 1, color);
         }
     }
 }
