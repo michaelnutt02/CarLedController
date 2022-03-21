@@ -27,7 +27,7 @@ void CarLedController::initStrip(int ledCount, int ledPin) {
     for(int i = 0; i < ledCount; i++) {
         _strip.setPixelColor(i, _strip.Color(255, 0, 0, 0));
         _strip.show();
-        delay(50);
+        delay(10);
     }
     for(int i = 0; i < ledCount; i++) {
         _strip.setPixelColor(i, _strip.Color(0, 0, 0, 0));
@@ -41,6 +41,15 @@ void CarLedController::blinkerRight(uint32_t color, int interval) {
 
     int startHorizontal = _numCols / 2;
     int endHorizontal = _numCols - 1;
+
+    for(int col = startHorizontal; col < endHorizontal; col++) {
+        setLed(0, col, _strip.Color(0,0,0));
+        setLed(_numRows - 1, col, _strip.Color(0,0,0));
+    }
+
+    for(int row = 0; row < _numRows; row++) {
+        setLed(row, _numCols - 1, _strip.Color(0,0,0));
+    }
 
     for(int col = startHorizontal; col < endHorizontal; col++) {
         if(map(col, startHorizontal, endHorizontal, 0, 4) <= i) {
