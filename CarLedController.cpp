@@ -20,6 +20,9 @@ void CarLedController::initStrip(int ledCount, int ledPin) {
     Adafruit_NeoPixel _strip(ledCount, ledPin, NEO_RGBW + NEO_KHZ800);
     _ledCount = ledCount;
     _strip.begin();
+    _strip.setPixelColor(0, _strip.Color(255,0,0));
+    _strip.setPixelColor(1, _strip.Color(0,255,0));
+    _strip.setPixelColor(2, _strip.Color(0,0,255));
     _strip.show();
 }
 
