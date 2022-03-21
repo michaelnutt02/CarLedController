@@ -8,7 +8,7 @@
 #include "CarLedController.h"
 #include <Adafruit_NeoPixel.h>
 
-CarLedController::CarLedController(int* leds, int numCols, int numRows, double brightness)
+CarLedController::CarLedController(int* leds, int numCols, int numRows, int brightness)
 {
     _leds = leds;
     _brightness = brightness;
