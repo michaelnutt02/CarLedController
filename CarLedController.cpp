@@ -167,7 +167,7 @@ void CarLedController::GAMER(int interval) {
     float ledScale = (float)361/_ledCount;
 
     for(int j = 0; j < _ledCount; j++) {
-        float hue = (i+j*ledScale) % 361;
+        float hue = (int)(i+j*ledScale) % 361;
         long color = HSBtoRGB(hue, saturation, brightness); 
         int red = color >> 16 & 255;
         int green = color >> 8 & 255;
