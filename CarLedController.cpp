@@ -8,27 +8,27 @@
 #include "CarLedController.h"
 #include <Adafruit_NeoPixel.h>
 
-CarLedController::CarLedController(int leds[][], double brightness)
+CarLedController::CarLedController(int* leds, int numCols, int numRows, double brightness)
 {
     _leds = leds;
     _brightness = brightness;
-    _numRows = sizeof(leds) / sizeof(leds[0]);
-    _numCols = sizeof(leds[0]) / sizeof(leds[0][0]);
+    _numRows = numRows;
+    _numCols = numCols;
 }
 
 void CarLedController::initStrip(int ledCount, int ledPin) {
-    _strip = Adafruit_NeoPixel strip(ledCount, ledPin, NEO_RGBW + NEO_KHZ800);
+    Adafruit_NeoPixel _strip(ledCount, ledPin, NEO_RGBW + NEO_KHZ800);
     _ledCount = ledCount;
     _strip.begin();
     _strip.show();
 }
 
 void CarLedController::blinkerRight(uint32_t color, int interval) {
-    const loopIterations = 6;
-    const i = (millis() / interval) % loopIterations;
+    int loopIterations = 6;
+    int i = (millis() / interval) % loopIterations;
 
-    const startHorizontal = _numCols / 2;
-    const endHorizontal = _numCols - 1;
+    int startHorizontal = _numCols / 2;
+    int endHorizontal = _numCols - 1;
 
     for(int col = startHorizontal; col < endHorizontal; col++) {
         if(map(col, startHorizontal, endHorizontal, 0, 3) <= i) {
@@ -54,14 +54,16 @@ void CarLedController::showEdges(uint32_t colorL, uint32_t colorU, uint32_t colo
         setLed(0, col, colorU);
         setLed(_numRows - 1, col, colorD);
     }
-    setLed(0, 0], colorCorner);
+    setLed(0, 0, colorCorner);
     setLed(_numRows - 1, 0, colorCorner);
     setLed(0, _numCols - 1, colorCorner);
     setLed(_numRows - 1, _numCols - 1, colorCorner);
 }
 
 void CarLedController::initLoop() {
-    for(int i = 0; i < _ledCount) _strip.setPixelColor(i, _strip.Color(0, 0, 0, 0));
+    for(int i = 0; i < _ledCount; i++) {
+        _strip.setPixelColor(i, _strip.Color(0, 0, 0, 0));
+    }
 }
 
 void CarLedController::renderLoop() {
@@ -70,5 +72,5 @@ void CarLedController::renderLoop() {
 }
 
 void CarLedController::setLed(int row, int col, uint32_t color) {
-    if(leds[row][col] != -1) _strip.setPixelColor(_leds[row][col], color);
+    if(_leds[row*_numRows+col] >= 0) _strip.setPixelColor(_leds[row*_numRows+col], color);
 }

@@ -12,7 +12,7 @@
     class CarLedController
     {
         public:
-            CarLedController(Adafruit_NeoPixel strip, int leds[][], double brightness);
+            CarLedController(int* leds, int numCols, int numRows, double brightness);
             void initLoop();
             void renderLoop();
             void initStrip(int ledCount, int ledPin);
@@ -22,10 +22,10 @@
         private:
             int _numRows;
             int _numCols;
-            int _leds[][];
             int _ledCount;
             double _brightness;
             Adafruit_NeoPixel _strip;
+            int* _leds;
     };
 
 #endif
