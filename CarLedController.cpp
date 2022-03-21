@@ -90,23 +90,6 @@ void CarLedController::setLed(int row, int col, uint32_t color) {
     if(_leds[row*_numRows+col] >= 0) _strip.setPixelColor(_leds[row*_numRows+col], color);
 }
 
-void CarLedController::GAMER(int interval) {
-    int loopIterations = 361;
-    int i = (millis() / interval) % loopIterations;
-
-    float saturation = 1; // Between 0 and 1 (0 = gray, 1 = full color)
-    float brightness = 1; // Between 0 and 1 (0 = dark, 1 is full brightness)
-
-    for(int j = 0; j < _ledCount; j++) {
-        float hue = (i+j) % 361;
-        long color = HSBtoRGB(hue, saturation, brightness); 
-        int red = color >> 16 & 255;
-        int green = color >> 8 & 255;
-        int blue = color & 255;
-        _strip.setPixelColor(j, _strip.Color(red, green, blue));
-    }
-}
-
 long HSBtoRGB(float _hue, float _sat, float _brightness) {
     float red = 0.0;
     float green = 0.0;
@@ -172,4 +155,21 @@ long HSBtoRGB(float _hue, float _sat, float _brightness) {
     long iblue = blue * 255.0;
     
     return long((ired << 16) | (igreen << 8) | (iblue));
+}
+
+void CarLedController::GAMER(int interval) {
+    int loopIterations = 361;
+    int i = (millis() / interval) % loopIterations;
+
+    float saturation = 1; // Between 0 and 1 (0 = gray, 1 = full color)
+    float brightness = 1; // Between 0 and 1 (0 = dark, 1 is full brightness)
+
+    for(int j = 0; j < _ledCount; j++) {
+        float hue = (i+j) % 361;
+        long color = HSBtoRGB(hue, saturation, brightness); 
+        int red = color >> 16 & 255;
+        int green = color >> 8 & 255;
+        int blue = color & 255;
+        _strip.setPixelColor(j, _strip.Color(red, green, blue));
+    }
 }
