@@ -54,10 +54,14 @@ void CarLedController::showEdges(uint32_t colorL, uint32_t colorU, uint32_t colo
         setLed(0, col, colorU);
         setLed(_numRows - 1, col, colorD);
     }
-    setLed(0, 0, colorCorner);
-    setLed(_numRows - 1, 0, colorCorner);
-    setLed(0, _numCols - 1, colorCorner);
-    setLed(_numRows - 1, _numCols - 1, colorCorner);
+    setLed(1, 0, colorCorner);
+    setLed(0, 1, colorCorner);
+    setLed(_numRows - 2, 0, colorCorner);
+    setLed(_numRows - 1, 1, colorCorner);
+    setLed(0, _numCols - 2, colorCorner);
+    setLed(1, _numCols - 1, colorCorner);
+    setLed(_numRows - 2, _numCols - 1, colorCorner);
+    setLed(_numRows - 1, _numCols - 2, colorCorner);
 }
 
 void CarLedController::initLoop() {
