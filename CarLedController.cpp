@@ -79,10 +79,6 @@ void CarLedController::setLed(int row, int col, uint32_t color) {
     if(_leds[row*_numRows+col] >= 0) _strip.setPixelColor(_leds[row*_numRows+col], color);
 }
 
-void CarLedController::setLed(int row, int col, uint32_t color) {
-    if(_leds[row*_numRows+col] >= 0) _strip.setPixelColor(_leds[row*_numRows+col], color);
-}
-
 void CarLedController::test1() {
     _strip.setPixelColor(0, _strip.Color(255,0,0));
     _strip.setPixelColor(1, _strip.Color(0,255,0));
