@@ -84,8 +84,8 @@ void CarLedController::setLed(int row, int col, uint32_t color) {
 }
 
 void CarLedController::test1() {
-    _strip.setPixelColor(0, strip.Color(255,0,0));
-    _strip.setPixelColor(1, strip.Color(0,255,0));
-    _strip.setPixelColor(2, strip.Color(0,0,255));
+    _strip.setPixelColor(0, _strip.Color(255,0,0));
+    _strip.setPixelColor(1, _strip.Color(0,255,0));
+    _strip.setPixelColor(2, _strip.Color(0,0,255));
     _strip.show();
 }
