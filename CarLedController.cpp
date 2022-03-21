@@ -164,7 +164,7 @@ void CarLedController::GAMER(int interval) {
     float saturation = 1; // Between 0 and 1 (0 = gray, 1 = full color)
     float brightness = 1; // Between 0 and 1 (0 = dark, 1 is full brightness)
 
-    float ledScale = 361/_ledCount;
+    float ledScale = (float)361/_ledCount;
 
     for(int j = 0; j < _ledCount; j++) {
         float hue = (i+j*ledScale) % 361;
