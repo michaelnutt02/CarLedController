@@ -22,6 +22,7 @@
             void blinkerRightBraking(uint32_t color, int interval);
             void GAMER(int interval, float density);
             void braking();
+            void solid();
         private:
             int _numRows;
             int _numCols;

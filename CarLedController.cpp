@@ -101,6 +101,12 @@ void CarLedController::braking() {
     }
 }
 
+void CarLedController::solid(uint32_t color) {
+    for(int j = 0; j < _ledCount; j++) {
+        _strip.setPixelColor(j, color);
+    }
+}
+
 void CarLedController::showEdges(uint32_t colorL, uint32_t colorU, uint32_t colorR, uint32_t colorD, uint32_t colorCorner) {
     for(int row = 0; row < _numRows; row++) {
         setLed(row, 0, colorL);
