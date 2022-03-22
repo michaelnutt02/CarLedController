@@ -25,7 +25,7 @@ void CarLedController::initStrip(int ledCount, int ledPin) {
     }
     _strip.show();
     for(int i = 0; i < ledCount; i++) {
-        _strip.setPixelColor(i, _strip.Color(255, 0, 0, 0));
+        _strip.setPixelColor(i, _strip.Color(0, 255, 0, 0));
         _strip.show();
         delay(25);
     }
