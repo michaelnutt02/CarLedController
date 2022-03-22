@@ -95,6 +95,12 @@ void CarLedController::blinkerRightBraking(uint32_t color, int interval) {
     }
 }
 
+void CarLedController::braking() {
+    for(int row = 0; row < _numRows; row++) {
+        setLed(row, _numCols - 1, _strip.Color(255,0,0));
+    }
+}
+
 void CarLedController::showEdges(uint32_t colorL, uint32_t colorU, uint32_t colorR, uint32_t colorD, uint32_t colorCorner) {
     for(int row = 0; row < _numRows; row++) {
         setLed(row, 0, colorL);
