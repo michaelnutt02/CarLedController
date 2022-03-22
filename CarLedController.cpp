@@ -96,8 +96,8 @@ void CarLedController::blinkerRightBraking(uint32_t color, int interval) {
 }
 
 void CarLedController::braking() {
-    for(int row = 0; row < _numRows; row++) {
-        setLed(row, _numCols - 1, _strip.Color(255,0,0));
+    for(int col = 0; col < _numCols; col++) {
+        setLed(_numRows - 1, col, _strip.Color(255,0,0));
     }
 }
 
