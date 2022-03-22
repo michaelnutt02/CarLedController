@@ -17,7 +17,7 @@ CarLedController::CarLedController(int* leds, int numCols, int numRows, int brig
 }
 
 void CarLedController::initStrip(int ledCount, int ledPin) {
-    _strip = Adafruit_NeoPixel(ledCount, ledPin, NEO_BRGW + NEO_KHZ800);
+    _strip = Adafruit_NeoPixel(ledCount, ledPin, NEO_BGRW + NEO_KHZ800);
     _ledCount = ledCount;
     _strip.begin();
     for(int i = 0; i < ledCount; i++) {
