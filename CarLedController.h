@@ -19,7 +19,9 @@
             void setLed(int row, int col, uint32_t color);
             void showEdges(uint32_t colorL, uint32_t colorU, uint32_t colorR, uint32_t colorD, uint32_t colorCorner);
             void blinkerRight(uint32_t color, int interval);
+            void blinkerLeft(uint32_t color, int interval);
             void blinkerRightBraking(uint32_t color, int interval);
+            void blinkerLeftBraking(uint32_t color, int interval);
             void GAMER(int interval, float density);
             void braking();
             void solid(uint32_t color);
