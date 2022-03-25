@@ -72,7 +72,7 @@ void CarLedController::blinkerLeft(uint32_t color, int interval) {
     int startHorizontal = _numCols / 2;
     int endHorizontal = 0;
 
-    for(int col = startHorizontal; col < endHorizontal; col--) {
+    for(int col = startHorizontal; col > endHorizontal; col--) {
         setLed(0, col, _strip.Color(0,0,0));
         setLed(_numRows - 1, col, _strip.Color(0,0,0));
     }
@@ -81,7 +81,7 @@ void CarLedController::blinkerLeft(uint32_t color, int interval) {
         setLed(row, 0, _strip.Color(0,0,0));
     }
 
-    for(int col = startHorizontal; col < endHorizontal; col--) {
+    for(int col = startHorizontal; col > endHorizontal; col--) {
         if(map(col, startHorizontal, endHorizontal, 0, 4) <= i) {
             setLed(0, col, color);
             setLed(_numRows - 1, col, color);
@@ -90,7 +90,7 @@ void CarLedController::blinkerLeft(uint32_t color, int interval) {
 
     for(int row = 0; row < _numRows; row++) {
         if(4 <= i) {
-            setLed(row, _numCols - 1, color);
+            setLed(row, 0, color);
         }
     }
 }
@@ -99,7 +99,7 @@ void CarLedController::blinkerRightBraking(uint32_t color, int interval) {
     int loopIterations = 6;
     int i = (millis() / interval) % loopIterations;
 
-    int startHorizontal = _numCols / 2;
+    int startHorizontal = _numCols / 2 + 1;
     int endHorizontal = _numCols - 1;
 
     for(int col = startHorizontal; col < endHorizontal; col++) {
@@ -132,7 +132,7 @@ void CarLedController::blinkerLeftBraking(uint32_t color, int interval) {
     int startHorizontal = _numCols / 2;
     int endHorizontal = 0;
 
-    for(int col = startHorizontal; col < endHorizontal; col--) {
+    for(int col = startHorizontal; col > endHorizontal; col--) {
         setLed(0, col, _strip.Color(0,0,0));
         setLed(_numRows - 1, col, _strip.Color(0,0,0));
     }
@@ -141,7 +141,7 @@ void CarLedController::blinkerLeftBraking(uint32_t color, int interval) {
         setLed(row, 0, _strip.Color(0,0,0));
     }
 
-    for(int col = startHorizontal; col < endHorizontal; col--) {
+    for(int col = startHorizontal; col ? endHorizontal; col--) {
         if(map(col, startHorizontal, endHorizontal, 0, 4) <= i) {
             setLed(0, col, color);
             setLed(_numRows - 1, col, _strip.Color(255,0,0));
@@ -150,7 +150,7 @@ void CarLedController::blinkerLeftBraking(uint32_t color, int interval) {
 
     for(int row = 0; row < _numRows; row++) {
         if(4 <= i) {
-            setLed(row, _numCols - 1, color);
+            setLed(row, 0, color);
         }
     }
 }
