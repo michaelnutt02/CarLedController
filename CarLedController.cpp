@@ -141,7 +141,7 @@ void CarLedController::blinkerLeftBraking(uint32_t color, int interval) {
         setLed(row, 0, _strip.Color(0,0,0));
     }
 
-    for(int col = startHorizontal; col ? endHorizontal; col--) {
+    for(int col = startHorizontal; col > endHorizontal; col--) {
         if(map(col, startHorizontal, endHorizontal, 0, 4) <= i) {
             setLed(0, col, color);
             setLed(_numRows - 1, col, _strip.Color(255,0,0));
